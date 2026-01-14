@@ -1,0 +1,268 @@
+帮忙写一个不需要后台的html网站，功能是每天更新抢权配债的数据，保存到本地.db中，每天可以自动更新或者手动点击按钮更新，一般有进展之后，里面的部分数据就会更新，这时候更新数据
+
+db分成如下列：
+可转债代码、可转债名称、股票代码、股票名称、当前方案进展时间、当前方案进展、董事会预案、股东大会批准、交易所受理、上市委通过、同意注册、申购时间、发行规模（亿元）、债券评级、申购时间、申购代码、上市日期、到期日期、退市日期、退市原因
+
+接口：
+“https://www.jisilu.cn/data/cbnew/pre_list/”
+bond_id：可转债代码
+bond_nm：可转债名称
+stock_id：股票代码
+stock_nm：股票名称
+amount：发行规模（亿元）
+rating_cd：债券评级
+progress_dt：当前方案进展时间
+progress_nm：当前方案进展，更新到“当前方案进展”列，如果cp_flag是“Y”，说明已经可以申购，
+progress_full字段中是发行流程具体的时间，也是后面5列的时间，要提取每个的时间：
+董事会预案 → 股东大会批准 → 交易所受理 → 上市委通过 → 同意注册 → 发行公告
+格式为：每一步有进展，就会追加那一步的数据：
+"2025-01-27 董事会预案\n2025-02-14 股东大会通过\n2025-04-30 交易所受理\n2025-09-27 上市委通过\n2025-11-09 同意注册\n"
+"2025-04-29 董事会预案\n2025-06-28 股东大会通过\n2025-08-05 交易所受理\n2025-11-20 上市委通过\n"
+"2025-09-30 董事会预案\n2025-10-16 股东大会通过\n2025-11-01 交易所受理\n"
+"2025-09-30 董事会预案\n2025-10-16 股东大会通过\n"
+"2024-01-30 董事会预案\n"
+apply_date：申购日期
+apply_cd：申购代码
+list_date：上市日期
+接口：
+“https://www.jisilu.cn/data/cbnew/delisted/?___jsl=LST___t=1764824234977”
+Request Method：POST
+LST___t后的数字是时间戳，使用当前时间
+接口返回的bond_id和表中的bond_id匹配，
+"issue_dt": 申购日期，上面接口中已经获取就不需要更新了
+"first_dt": 上市日期，上面接口中已经获取就不需要更新了
+"maturity_dt": 到期日期
+"delist_dt": 退市日期
+"delist_notes": 退市原因
+				
+接口：
+“https://www.jisilu.cn/data/cbnew/pre_list/”
+
+"price": "19.05",
+"increase_rt": "-4.61",
+"pma_rt": "104.33",
+"pb": "4.278",
+"margin_flg": "R",
+"rid": 1361,
+"stock_id": "300996",
+"stock_nm": "普联软件",
+"bond_id": "123261",
+"bond_nm": "普联转债",
+"audit_id": null,
+"registration": "Y",
+"accept_date": "2025-04-25",
+"amount": "2.430",
+"b_shares": "0.0",
+"pg_shares": null,
+"cb_amount": "4.51",
+"ma20_price": "18.63",
+"naps": null,
+"convert_price": "18.26",
+"apply_date": "2025-12-05",
+"apply_cd": "370996",
+"ration_cd": "380996",
+"record_dt": "2025-12-04",
+"record_price": null,
+"ration": "0.8598",
+"list_date": null,
+"list_price": null,
+"status_cd": "ON",
+"ration_rt": null,
+"online_amount": null,
+"lucky_draw_rt": null,
+"individual_limit": 10000,
+"underwriter_rt": null,
+"rating_cd": "A+",
+"offline_limit": null,
+"offline_accounts": null,
+"offline_draw": null,
+"valid_apply_raw": null,
+"jsl_advise_text": "",
+"apply10": 1164,
+"eval_amount": "N",
+"progress_nm": "2025-12-05申购\u003Cbr\u003E\u003Cspan style=\"font-size:0.8em;color:#999;\"\u003E申购代码 370996\u003C/span\u003E",
+"cb_type": "可转债",
+"progress_dt": "2025-12-05",
+"progress_full": "2025-02-25 董事会预案\n2025-03-12 股东大会通过\n2025-04-25 交易所受理\n2025-09-25 上市委通过\n2025-11-18 同意注册\n",
+"cp_flag": "Y",
+"convert_price_tips": "",
+"apply_tips": "申购代码：370996；配售代码：380996；",
+"ap_flag": "B",
+"orders": 1
+		
+		
+数据返回格式：
+{
+  "page": 1,
+  "rows": [
+    {
+      "id": "688502",
+      "cell": {
+        "price": "350.94",
+        "increase_rt": "-1.28",
+        "pma_rt": "96.30",
+        "pb": "15.395",
+        "margin_flg": "R",
+        "rid": 1354,
+        "stock_id": "688502",
+        "stock_nm": "茂莱光学",
+        "bond_id": "118061",
+        "bond_nm": "茂莱转债",
+        "audit_id": null,
+        "registration": "Y",
+        "accept_date": "2025-04-30",
+        "amount": "5.630",
+        "b_shares": "0.0",
+        "pg_shares": null,
+        "cb_amount": "3.10",
+        "ma20_price": "350.72",
+        "naps": null,
+        "convert_price": "364.43",
+        "apply_date": "2025-11-21",
+        "apply_cd": "718502",
+        "ration_cd": "726502",
+        "record_dt": "2025-11-20",
+        "record_price": "345.000",
+        "ration": "10.7030",
+        "list_date": null,
+        "list_price": null,
+        "status_cd": "ON",
+        "ration_rt": "80.040",
+        "online_amount": "1.12",
+        "lucky_draw_rt": "0.0014",
+        "individual_limit": 10000,
+        "underwriter_rt": null,
+        "rating_cd": "A+",
+        "offline_limit": null,
+        "offline_accounts": null,
+        "offline_draw": null,
+        "valid_apply_raw": null,
+        "jsl_advise_text": "",
+        "apply10": 94,
+        "eval_amount": "N",
+        "progress_nm": "2025-11-21申购\u003Cbr\u003E\u003Cspan style=\"font-size:0.8em;color:#999;\"\u003E申购代码 718502\u003C/span\u003E",
+        "cb_type": "可转债",
+        "progress_dt": "2025-11-21",
+        "progress_full": "2025-01-27 董事会预案\n2025-02-14 股东大会通过\n2025-04-30 交易所受理\n2025-09-27 上市委通过\n2025-11-09 同意注册\n",
+        "cp_flag": "Y",
+        "convert_price_tips": "",
+        "apply_tips": "申购代码：718502；配售代码：726502；",
+        "ap_flag": "C",
+        "single_draw": "0.0135",
+        "valid_apply": "830.62",
+        "orders": 1
+      }
+    },
+
+
+新增接口来获取上市后的可转债的信息，更新下面字段：
+ https://www.jisilu.cn/data/cbnew/cb_list_new/?___jsl=LST___t=1765766312858
+ Request Method：POST
+ LST___t后的数字是时间戳，使用当前时间
+ 接口返回的bond_id和表中的bond_id匹配，
+ "list_dt": 上市日期，如果有数据就不需要更新了
+ "maturity_dt": 到期日期
+ 
+ 接口返回格式：
+{
+    "page": 1,
+    "rows": [
+        {
+            "id": "123249",
+            "cell": {
+                "bond_id": "123249",
+                "bond_nm": "英搏转债",
+                "bond_py": "ybzz",
+                "price": 142.06,
+                "increase_rt": -2.96,
+                "stock_id": "300681",
+                "stock_nm": "英搏尔",
+                "stock_py": "ybe",
+                "sprice": 25.16,
+                "sincrease_rt": -1.06,
+                "pb": 2.9,
+                "convert_price": 17.34,
+                "convert_value": 145.1,
+                "convert_dt": 0,
+                "premium_rt": -2.1,
+                "dblow": 139.96,
+                "sw_cd": "280206",
+                "market_cd": "szcy",
+                "btype": "C",
+                "list_dt": "2024-11-11",
+                "t_flag": [],
+                "owned": 0,
+                "hold": 0,
+                "bond_value": "buy",
+                "rating_cd": "AA",
+                "option_value": null,
+                "put_convert_price": 12.138,
+                "force_redeem_price": 22.542,
+                "convert_amt_ratio": 10.1,
+                "fund_rt": "buy",
+                "maturity_dt": "2030-10-24",
+                "year_left": null,
+                "curr_iss_amt": 5.025,
+                "volume": 24579.63,
+                "svolume": 10760.19,
+                "turnover_rt": 34.48,
+                "ytm_rt": null,
+                "put_ytm_rt": null,
+                "noted": 0,
+                "last_time": "10:38:30",
+                "qstatus": "00",
+                "sqflag": "Y",
+                "pb_flag": "N",
+                "adj_cnt": 0,
+                "adj_scnt": 0,
+                "convert_price_valid": "Y",
+                "convert_price_tips": "",
+                "convert_cd_tip": "2025-04-30 开始转股",
+                "ref_yield_info": "强赎登记日2025-12-30，赎回价格100.100元，如不考虑强赎纯债价值为102.73元，计算使用4.9年期 评级为AA 债参考YTM：2.3555",
+                "adjusted": "N",
+                "orig_iss_amt": 8.172,
+                "price_tips": "全价：142.060 最后更新：10:38:30",
+                "redeem_dt": "2025-12-30",
+                "real_force_redeem_price": "100.100",
+                "option_tip": "如不考虑强赎期权价值为83.51元",
+                "after_next_put_dt": 0,
+                "icons": {
+                    "R": "最后交易日：2025年12月30日\r\n最后转股日：2026年1月6日\r\n赎回价：100.10元\/张",
+                    "M": ""
+                },
+                "is_min_price": 0,
+                "blocked": 0,
+                "putting": "N",
+                "force_redeem_price_tip": "",
+                "notes": null,
+                "volatility_rate": "buy",
+                "debt_rate": "buy"
+            }
+        },
+
+
+
+下面接口逻辑是，可转债的全生命周期，待发转债->上市转债->退市转债
+待发转债：https://www.jisilu.cn/data/cbnew/pre_list/
+上市转债：https://www.jisilu.cn/data/cbnew/cb_list_new
+退市转债：https://www.jisilu.cn/data/cbnew/delisted/
+
+并且接口获取的数据中，部分会重复：
+1、待发转债接口包含：董事会预案	股东大会批准	交易所受理	上市委通过	同意注册  申购时间	申购代码	 上市日期
+"apply_date"：申购日期
+"list_dt":上市日期
+2、上市转债接口包含：上市日期   到期日期	
+"list_dt":上市日期
+"maturity_dt": 到期日期
+3、退市转债接口包含：申购时间  上市日期  到期日期  退市日期	退市原因
+"issue_dt": 申购日期
+"first_dt": 上市日期
+"maturity_dt": 到期日期
+"delist_dt": 退市日期
+"delist_notes": 退市原因
+
+
+待发转债数据和上市转债数据会会有重合，比如股票代码一致，在待发转债到了申购待上市状态的时候，待发转债接口和上市转债接口返回的数据里面都有这个数据，这一部分逻辑要注意。
+
+另外待发转债从同意注册状态，变成申购待上市状态的时候，会由只有stock_id，变成stock_id和bond_id都存在，目前代码中没有这部分逻辑，导致由同意注册的股票，已经变成待申购状态了，但是同意注册的数据不是更新bond_id，而是插入了一条新的数据，同时有了1：stock_id 同意注册的数据（老的数据），2：stock_id和bond_id都有，待申购带上市状态的数据（新的数据）
+

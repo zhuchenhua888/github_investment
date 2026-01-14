@@ -1,0 +1,1082 @@
+[
+  {
+    "date": "2008年01月份",
+    "market_cap_shanghai": 225354.97,
+    "market_cap_shenzhen": 52499.85
+  },
+  {
+    "date": "2008年02月份",
+    "market_cap_shanghai": 225846.35,
+    "market_cap_shenzhen": 55786.67
+  },
+  {
+    "date": "2008年03月份",
+    "market_cap_shanghai": 181350.15,
+    "market_cap_shenzhen": 45438.99
+  },
+  {
+    "date": "2008年04月份",
+    "market_cap_shanghai": 194727.31,
+    "market_cap_shenzhen": 45516.94
+  },
+  {
+    "date": "2008年05月份",
+    "market_cap_shanghai": 181247.11,
+    "market_cap_shenzhen": 43619.59
+  },
+  {
+    "date": "2008年06月份",
+    "market_cap_shanghai": 144508.33,
+    "market_cap_shenzhen": 33526.77
+  },
+  {
+    "date": "2008年07月份",
+    "market_cap_shanghai": 146667.15,
+    "market_cap_shenzhen": 35217.45
+  },
+  {
+    "date": "2008年08月份",
+    "market_cap_shanghai": 127029.73,
+    "market_cap_shenzhen": 28405.56
+  },
+  {
+    "date": "2008年09月份",
+    "market_cap_shanghai": 121615.05,
+    "market_cap_shenzhen": 26548.93
+  },
+  {
+    "date": "2008年10月份",
+    "market_cap_shanghai": 91719.66,
+    "market_cap_shenzhen": 20348.14
+  },
+  {
+    "date": "2008年11月份",
+    "market_cap_shanghai": 99152.56,
+    "market_cap_shenzhen": 23331.68
+  },
+  {
+    "date": "2008年12月份",
+    "market_cap_shanghai": 97251.91,
+    "market_cap_shenzhen": 24114.53
+  },
+  {
+    "date": "2009年01月份",
+    "market_cap_shanghai": 106478.69,
+    "market_cap_shenzhen": 26616.8
+  },
+  {
+    "date": "2009年02月份",
+    "market_cap_shanghai": 111624.52,
+    "market_cap_shenzhen": 28764.68
+  },
+  {
+    "date": "2009年03月份",
+    "market_cap_shanghai": 127267.07,
+    "market_cap_shenzhen": 34207.17
+  },
+  {
+    "date": "2009年04月份",
+    "market_cap_shanghai": 132959.05,
+    "market_cap_shenzhen": 36294.26
+  },
+  {
+    "date": "2009年05月份",
+    "market_cap_shanghai": 141337.38,
+    "market_cap_shenzhen": 38449.26
+  },
+  {
+    "date": "2009年06月份",
+    "market_cap_shanghai": 159107.69127578,
+    "market_cap_shenzhen": 42340.37
+  },
+  {
+    "date": "2009年07月份",
+    "market_cap_shanghai": 186119.25484451,
+    "market_cap_shenzhen": 49615.549
+  },
+  {
+    "date": "2009年08月份",
+    "market_cap_shanghai": 146363.14917487,
+    "market_cap_shenzhen": 40732.247
+  },
+  {
+    "date": "2009年09月份",
+    "market_cap_shanghai": 153562.13542291,
+    "market_cap_shenzhen": 43339.555
+  },
+  {
+    "date": "2009年10月份",
+    "market_cap_shanghai": 165927.44366454,
+    "market_cap_shenzhen": 49964.568
+  },
+  {
+    "date": "2009年11月份",
+    "market_cap_shanghai": 178652.42606219,
+    "market_cap_shenzhen": 57250.614
+  },
+  {
+    "date": "2009年12月份",
+    "market_cap_shanghai": 184655.22570837,
+    "market_cap_shenzhen": 59283.893
+  },
+  {
+    "date": "2010年01月份",
+    "market_cap_shanghai": 169410.78594739,
+    "market_cap_shenzhen": 56950.832
+  },
+  {
+    "date": "2010年02月份",
+    "market_cap_shanghai": 174852.63138063,
+    "market_cap_shenzhen": 61744.368
+  },
+  {
+    "date": "2010年03月份",
+    "market_cap_shanghai": 179578.57240765,
+    "market_cap_shenzhen": 65374.007
+  },
+  {
+    "date": "2010年04月份",
+    "market_cap_shanghai": 165860.99,
+    "market_cap_shenzhen": 62044.52
+  },
+  {
+    "date": "2010年05月份",
+    "market_cap_shanghai": 149971.17105674,
+    "market_cap_shenzhen": 59668.26
+  },
+  {
+    "date": "2010年06月份",
+    "market_cap_shanghai": 139065.89,
+    "market_cap_shenzhen": 56072.838
+  },
+  {
+    "date": "2010年07月份",
+    "market_cap_shanghai": 161367.0,
+    "market_cap_shenzhen": 64555.052
+  },
+  {
+    "date": "2010年08月份",
+    "market_cap_shanghai": 163401.11,
+    "market_cap_shenzhen": 71720.248
+  },
+  {
+    "date": "2010年09月份",
+    "market_cap_shanghai": 165191.88,
+    "market_cap_shenzhen": 73548.481
+  },
+  {
+    "date": "2010年10月份",
+    "market_cap_shanghai": 187015.4194,
+    "market_cap_shenzhen": 83118.167
+  },
+  {
+    "date": "2010年11月份",
+    "market_cap_shanghai": 178723.8301,
+    "market_cap_shenzhen": 85591.749
+  },
+  {
+    "date": "2010年12月份",
+    "market_cap_shanghai": 179007.2382,
+    "market_cap_shenzhen": 86415.354
+  },
+  {
+    "date": "2011年01月份",
+    "market_cap_shanghai": 179868.1708,
+    "market_cap_shenzhen": 81421.683
+  },
+  {
+    "date": "2011年02月份",
+    "market_cap_shanghai": 187914.3473,
+    "market_cap_shenzhen": 88943.371
+  },
+  {
+    "date": "2011年03月份",
+    "market_cap_shanghai": 190187.1702,
+    "market_cap_shenzhen": 87475.008
+  },
+  {
+    "date": "2011年04月份",
+    "market_cap_shanghai": 189910.2923,
+    "market_cap_shenzhen": 84727.077
+  },
+  {
+    "date": "2011年05月份",
+    "market_cap_shanghai": 179410.6669,
+    "market_cap_shenzhen": 78780.697
+  },
+  {
+    "date": "2011年06月份",
+    "market_cap_shanghai": 181250.6958,
+    "market_cap_shenzhen": 82963.641
+  },
+  {
+    "date": "2011年07月份",
+    "market_cap_shanghai": 177654.9785,
+    "market_cap_shenzhen": 85725.712
+  },
+  {
+    "date": "2011年08月份",
+    "market_cap_shanghai": 169769.7807,
+    "market_cap_shenzhen": 84847.422
+  },
+  {
+    "date": "2011年09月份",
+    "market_cap_shanghai": 156629.1495,
+    "market_cap_shenzhen": 74967.121
+  },
+  {
+    "date": "2011年10月份",
+    "market_cap_shanghai": 165015.1574,
+    "market_cap_shenzhen": 77967.756
+  },
+  {
+    "date": "2011年11月份",
+    "market_cap_shanghai": 156401.7271,
+    "market_cap_shenzhen": 75313.684
+  },
+  {
+    "date": "2011年12月份",
+    "market_cap_shanghai": 148376.2238,
+    "market_cap_shenzhen": 66381.872
+  },
+  {
+    "date": "2012年01月份",
+    "market_cap_shanghai": 155020.9216,
+    "market_cap_shenzhen": 65898.36
+  },
+  {
+    "date": "2012年02月份",
+    "market_cap_shanghai": 164763.61,
+    "market_cap_shenzhen": 74046.911
+  },
+  {
+    "date": "2012年03月份",
+    "market_cap_shanghai": 154942.35,
+    "market_cap_shenzhen": 69762.5549
+  },
+  {
+    "date": "2012年04月份",
+    "market_cap_shanghai": 164410.8645,
+    "market_cap_shenzhen": 73767.0651
+  },
+  {
+    "date": "2012年05月份",
+    "market_cap_shanghai": 162995.0807,
+    "market_cap_shenzhen": 76312.9658
+  },
+  {
+    "date": "2012年06月份",
+    "market_cap_shanghai": 153189.31,
+    "market_cap_shenzhen": 73019.96920497
+  },
+  {
+    "date": "2012年07月份",
+    "market_cap_shanghai": 145228.16,
+    "market_cap_shenzhen": 67963.8535
+  },
+  {
+    "date": "2012年08月份",
+    "market_cap_shanghai": 142246.6544,
+    "market_cap_shenzhen": 67318.3118
+  },
+  {
+    "date": "2012年09月份",
+    "market_cap_shanghai": 145002.93,
+    "market_cap_shenzhen": 68944.4457
+  },
+  {
+    "date": "2012年10月份",
+    "market_cap_shanghai": 144324.72,
+    "market_cap_shenzhen": 68459.2802
+  },
+  {
+    "date": "2012年11月份",
+    "market_cap_shanghai": 138226.31,
+    "market_cap_shenzhen": 61151.7702
+  },
+  {
+    "date": "2012年12月份",
+    "market_cap_shanghai": 158698.44,
+    "market_cap_shenzhen": 71659.1818
+  },
+  {
+    "date": "2013年01月份",
+    "market_cap_shanghai": 167496.85,
+    "market_cap_shenzhen": 76411.4341
+  },
+  {
+    "date": "2013年02月份",
+    "market_cap_shanghai": 166305.89,
+    "market_cap_shenzhen": 79210.331
+  },
+  {
+    "date": "2013年03月份",
+    "market_cap_shanghai": 157311.6812,
+    "market_cap_shenzhen": 76373.2918
+  },
+  {
+    "date": "2013年04月份",
+    "market_cap_shanghai": 153372.452,
+    "market_cap_shenzhen": 75269.4409
+  },
+  {
+    "date": "2013年05月份",
+    "market_cap_shanghai": 162317.72,
+    "market_cap_shenzhen": 85437.0264
+  },
+  {
+    "date": "2013年06月份",
+    "market_cap_shanghai": 139774.5222,
+    "market_cap_shenzhen": 73038.3968
+  },
+  {
+    "date": "2013年07月份",
+    "market_cap_shanghai": 141092.00341419,
+    "market_cap_shenzhen": 77439.8271
+  },
+  {
+    "date": "2013年08月份",
+    "market_cap_shanghai": 148444.65,
+    "market_cap_shenzhen": 81747.4611
+  },
+  {
+    "date": "2013年09月份",
+    "market_cap_shanghai": 154176.0,
+    "market_cap_shenzhen": 87100.4163
+  },
+  {
+    "date": "2013年10月份",
+    "market_cap_shanghai": 151969.82135539,
+    "market_cap_shenzhen": 84224.692
+  },
+  {
+    "date": "2013年11月份",
+    "market_cap_shanghai": 157701.32,
+    "market_cap_shenzhen": 89983.2859
+  },
+  {
+    "date": "2013年12月份",
+    "market_cap_shanghai": 151165.27327707,
+    "market_cap_shenzhen": 87911.9244
+  },
+  {
+    "date": "2014年01月份",
+    "market_cap_shanghai": 146312.12,
+    "market_cap_shenzhen": 91513.5612
+  },
+  {
+    "date": "2014年02月份",
+    "market_cap_shanghai": 148812.1,
+    "market_cap_shenzhen": 92871.3598
+  },
+  {
+    "date": "2014年03月份",
+    "market_cap_shanghai": 147741.56,
+    "market_cap_shenzhen": 88883.5018
+  },
+  {
+    "date": "2014年04月份",
+    "market_cap_shanghai": 147495.35,
+    "market_cap_shenzhen": 88780.3536
+  },
+  {
+    "date": "2014年05月份",
+    "market_cap_shanghai": 148663.67,
+    "market_cap_shenzhen": 91059.9424
+  },
+  {
+    "date": "2014年06月份",
+    "market_cap_shanghai": 149421.28,
+    "market_cap_shenzhen": 94708.388
+  },
+  {
+    "date": "2014年07月份",
+    "market_cap_shanghai": 161470.57,
+    "market_cap_shenzhen": 100518.8879
+  },
+  {
+    "date": "2014年08月份",
+    "market_cap_shanghai": 163342.43,
+    "market_cap_shenzhen": 105359.4051
+  },
+  {
+    "date": "2014年09月份",
+    "market_cap_shanghai": 176124.14,
+    "market_cap_shenzhen": 117424.0285
+  },
+  {
+    "date": "2014年10月份",
+    "market_cap_shanghai": 180974.34,
+    "market_cap_shenzhen": 119512.3194
+  },
+  {
+    "date": "2014年11月份",
+    "market_cap_shanghai": 201252.15,
+    "market_cap_shenzhen": 126574.7734
+  },
+  {
+    "date": "2014年12月份",
+    "market_cap_shanghai": 243974.02,
+    "market_cap_shenzhen": 128572.936
+  },
+  {
+    "date": "2015年01月份",
+    "market_cap_shanghai": 244996.24,
+    "market_cap_shenzhen": 140428.5265
+  },
+  {
+    "date": "2015年02月份",
+    "market_cap_shanghai": 255115.63,
+    "market_cap_shenzhen": 152477.0623
+  },
+  {
+    "date": "2015年03月份",
+    "market_cap_shanghai": 292210.37,
+    "market_cap_shenzhen": 184807.7844
+  },
+  {
+    "date": "2015年04月份",
+    "market_cap_shanghai": 348418.9,
+    "market_cap_shenzhen": 215072.455
+  },
+  {
+    "date": "2015年05月份",
+    "market_cap_shanghai": 360625.68,
+    "market_cap_shenzhen": 266839.7766
+  },
+  {
+    "date": "2015年06月份",
+    "market_cap_shanghai": 346690.84,
+    "market_cap_shenzhen": 237882.814
+  },
+  {
+    "date": "2015年07月份",
+    "market_cap_shanghai": 300012.99,
+    "market_cap_shenzhen": 204832.6489
+  },
+  {
+    "date": "2015年08月份",
+    "market_cap_shanghai": 263124.83,
+    "market_cap_shenzhen": 174902.3642
+  },
+  {
+    "date": "2015年09月份",
+    "market_cap_shanghai": 251074.57,
+    "market_cap_shenzhen": 168453.5927
+  },
+  {
+    "date": "2015年10月份",
+    "market_cap_shanghai": 278486.09,
+    "market_cap_shenzhen": 198135.9227
+  },
+  {
+    "date": "2015年11月份",
+    "market_cap_shanghai": 284894.29,
+    "market_cap_shenzhen": 218741.8778
+  },
+  {
+    "date": "2015年12月份",
+    "market_cap_shanghai": 295194.2,
+    "market_cap_shenzhen": 236109.9961
+  },
+  {
+    "date": "2016年01月份",
+    "market_cap_shanghai": 229463.81,
+    "market_cap_shenzhen": 174336.4771
+  },
+  {
+    "date": "2016年02月份",
+    "market_cap_shanghai": 226320.64,
+    "market_cap_shenzhen": 170706.8067
+  },
+  {
+    "date": "2016年03月份",
+    "market_cap_shanghai": 254081.52,
+    "market_cap_shenzhen": 200074.6146
+  },
+  {
+    "date": "2016年04月份",
+    "market_cap_shanghai": 249670.57,
+    "market_cap_shenzhen": 198236.6484
+  },
+  {
+    "date": "2016年05月份",
+    "market_cap_shanghai": 248543.79,
+    "market_cap_shenzhen": 200097.6279
+  },
+  {
+    "date": "2016年06月份",
+    "market_cap_shanghai": 250920.44,
+    "market_cap_shenzhen": 212000.0742
+  },
+  {
+    "date": "2016年07月份",
+    "market_cap_shanghai": 256919.86,
+    "market_cap_shenzhen": 209543.8541
+  },
+  {
+    "date": "2016年08月份",
+    "market_cap_shanghai": 270601.32,
+    "market_cap_shenzhen": 221033.8787
+  },
+  {
+    "date": "2016年09月份",
+    "market_cap_shanghai": 265741.24,
+    "market_cap_shenzhen": 219266.3008
+  },
+  {
+    "date": "2016年10月份",
+    "market_cap_shanghai": 278042.22,
+    "market_cap_shenzhen": 226855.4302
+  },
+  {
+    "date": "2016年11月份",
+    "market_cap_shanghai": 295302.89,
+    "market_cap_shenzhen": 235367.5448
+  },
+  {
+    "date": "2016年12月份",
+    "market_cap_shanghai": 284607.63,
+    "market_cap_shenzhen": 223078.2546
+  },
+  {
+    "date": "2017年01月份",
+    "market_cap_shanghai": 294122.4,
+    "market_cap_shenzhen": 223125.3603
+  },
+  {
+    "date": "2017年02月份",
+    "market_cap_shanghai": 303722.14,
+    "market_cap_shenzhen": 234489.7309
+  },
+  {
+    "date": "2017年03月份",
+    "market_cap_shanghai": 304479.78,
+    "market_cap_shenzhen": 235108.3714
+  },
+  {
+    "date": "2017年04月份",
+    "market_cap_shanghai": 300302.72,
+    "market_cap_shenzhen": 227178.1092
+  },
+  {
+    "date": "2017年05月份",
+    "market_cap_shanghai": 297775.27,
+    "market_cap_shenzhen": 215837.5048
+  },
+  {
+    "date": "2017年06月份",
+    "market_cap_shanghai": 307464.99,
+    "market_cap_shenzhen": 226856.7263
+  },
+  {
+    "date": "2017年07月份",
+    "market_cap_shanghai": 316976.04,
+    "market_cap_shenzhen": 225201.257
+  },
+  {
+    "date": "2017年08月份",
+    "market_cap_shanghai": 327100.64,
+    "market_cap_shenzhen": 234872.1338
+  },
+  {
+    "date": "2017年09月份",
+    "market_cap_shanghai": 327809.44,
+    "market_cap_shenzhen": 241491.4973
+  },
+  {
+    "date": "2017年10月份",
+    "market_cap_shanghai": 334498.47,
+    "market_cap_shenzhen": 244622.6167
+  },
+  {
+    "date": "2017年11月份",
+    "market_cap_shanghai": 330215.13,
+    "market_cap_shenzhen": 233801.2846
+  },
+  {
+    "date": "2017年12月份",
+    "market_cap_shanghai": 331324.82,
+    "market_cap_shenzhen": 235761.2565
+  },
+  {
+    "date": "2018年01月份",
+    "market_cap_shanghai": 351041.77,
+    "market_cap_shenzhen": 234531.3323
+  },
+  {
+    "date": "2018年02月份",
+    "market_cap_shanghai": 334105.65,
+    "market_cap_shenzhen": 227540.3588
+  },
+  {
+    "date": "2018年03月份",
+    "market_cap_shanghai": 325666.71,
+    "market_cap_shenzhen": 233851.8805
+  },
+  {
+    "date": "2018年04月份",
+    "market_cap_shanghai": 317966.5,
+    "market_cap_shenzhen": 224566.1194
+  },
+  {
+    "date": "2018年05月份",
+    "market_cap_shanghai": 320700.9,
+    "market_cap_shenzhen": 223519.2273
+  },
+  {
+    "date": "2018年06月份",
+    "market_cap_shanghai": 299581.98,
+    "market_cap_shenzhen": 204635.4358
+  },
+  {
+    "date": "2018年07月份",
+    "market_cap_shanghai": 305437.18,
+    "market_cap_shenzhen": 200770.9569
+  },
+  {
+    "date": "2018年08月份",
+    "market_cap_shanghai": 290651.26,
+    "market_cap_shenzhen": 185050.9407
+  },
+  {
+    "date": "2018年09月份",
+    "market_cap_shanghai": 301557.14,
+    "market_cap_shenzhen": 185058.5786
+  },
+  {
+    "date": "2018年10月份",
+    "market_cap_shanghai": 278622.02,
+    "market_cap_shenzhen": 167911.8113
+  },
+  {
+    "date": "2018年11月份",
+    "market_cap_shanghai": 279653.98,
+    "market_cap_shenzhen": 173969.0676
+  },
+  {
+    "date": "2018年12月份",
+    "market_cap_shanghai": 269515.02,
+    "market_cap_shenzhen": 165409.0173
+  },
+  {
+    "date": "2019年01月份",
+    "market_cap_shanghai": 281023.82,
+    "market_cap_shenzhen": 167861.9181
+  },
+  {
+    "date": "2019年02月份",
+    "market_cap_shanghai": 320193.59,
+    "market_cap_shenzhen": 204668.5423
+  },
+  {
+    "date": "2019年03月份",
+    "market_cap_shanghai": 337193.46,
+    "market_cap_shenzhen": 225662.4501
+  },
+  {
+    "date": "2019年04月份",
+    "market_cap_shanghai": 336590.16,
+    "market_cap_shenzhen": 218667.9404
+  },
+  {
+    "date": "2019年05月份",
+    "market_cap_shanghai": 318321.46,
+    "market_cap_shenzhen": 204644.4653
+  },
+  {
+    "date": "2019年06月份",
+    "market_cap_shanghai": 327971.84,
+    "market_cap_shenzhen": 208324.6582
+  },
+  {
+    "date": "2019年07月份",
+    "market_cap_shanghai": 330361.41,
+    "market_cap_shenzhen": 210141.9049
+  },
+  {
+    "date": "2019年08月份",
+    "market_cap_shanghai": 325976.92,
+    "market_cap_shenzhen": 213732.6817
+  },
+  {
+    "date": "2019年09月份",
+    "market_cap_shanghai": 329091.66,
+    "market_cap_shenzhen": 216744.4483
+  },
+  {
+    "date": "2019年10月份",
+    "market_cap_shanghai": 332673.18,
+    "market_cap_shenzhen": 220020.8811
+  },
+  {
+    "date": "2019年11月份",
+    "market_cap_shanghai": 329076.0,
+    "market_cap_shenzhen": 217810.567
+  },
+  {
+    "date": "2019年12月份",
+    "market_cap_shanghai": 355519.7,
+    "market_cap_shenzhen": 237414.8651
+  },
+  {
+    "date": "2020年01月份",
+    "market_cap_shanghai": 354226.4,
+    "market_cap_shenzhen": 242953.161
+  },
+  {
+    "date": "2020年02月份",
+    "market_cap_shanghai": 346830.35,
+    "market_cap_shenzhen": 249809.7947
+  },
+  {
+    "date": "2020年03月份",
+    "market_cap_shanghai": 330896.73,
+    "market_cap_shenzhen": 231956.9144
+  },
+  {
+    "date": "2020年04月份",
+    "market_cap_shanghai": 347423.31,
+    "market_cap_shenzhen": 246570.4323
+  },
+  {
+    "date": "2020年05月份",
+    "market_cap_shanghai": 349401.77,
+    "market_cap_shenzhen": 250708.1368
+  },
+  {
+    "date": "2020年06月份",
+    "market_cap_shanghai": 372015.47,
+    "market_cap_shenzhen": 276758.9251
+  },
+  {
+    "date": "2020年07月份",
+    "market_cap_shanghai": 420925.54,
+    "market_cap_shenzhen": 317248.9982
+  },
+  {
+    "date": "2020年08月份",
+    "market_cap_shanghai": 433279.0,
+    "market_cap_shenzhen": 326196.5557
+  },
+  {
+    "date": "2020年09月份",
+    "market_cap_shanghai": 413729.0,
+    "market_cap_shenzhen": 307958.4034
+  },
+  {
+    "date": "2020年10月份",
+    "market_cap_shanghai": 416867.0,
+    "market_cap_shenzhen": 318941.6294
+  },
+  {
+    "date": "2020年11月份",
+    "market_cap_shanghai": 441857.0,
+    "market_cap_shenzhen": 327665.5123
+  },
+  {
+    "date": "2020年12月份",
+    "market_cap_shanghai": 455322.0,
+    "market_cap_shenzhen": 341916.5785
+  },
+  {
+    "date": "2021年01月份",
+    "market_cap_shanghai": 457015.0,
+    "market_cap_shenzhen": 344614.4823
+  },
+  {
+    "date": "2021年02月份",
+    "market_cap_shanghai": 461069.0,
+    "market_cap_shenzhen": 339721.8537
+  },
+  {
+    "date": "2021年03月份",
+    "market_cap_shanghai": 453444.0,
+    "market_cap_shenzhen": 330286.4132
+  },
+  {
+    "date": "2021年04月份",
+    "market_cap_shanghai": 457628.0,
+    "market_cap_shenzhen": 345643.8973
+  },
+  {
+    "date": "2021年05月份",
+    "market_cap_shanghai": 486277.0,
+    "market_cap_shenzhen": 364242.5036
+  },
+  {
+    "date": "2021年06月份",
+    "market_cap_shanghai": 491818.0,
+    "market_cap_shenzhen": 371916.9179
+  },
+  {
+    "date": "2021年07月份",
+    "market_cap_shanghai": 469545.0,
+    "market_cap_shenzhen": 360890.8713
+  },
+  {
+    "date": "2021年08月份",
+    "market_cap_shanghai": 496678.0,
+    "market_cap_shenzhen": 370639.7324
+  },
+  {
+    "date": "2021年09月份",
+    "market_cap_shanghai": 499887.0,
+    "market_cap_shenzhen": 367039.5687
+  },
+  {
+    "date": "2021年10月份",
+    "market_cap_shanghai": 498061.0,
+    "market_cap_shenzhen": 369195.8912
+  },
+  {
+    "date": "2021年11月份",
+    "market_cap_shanghai": 506720.0,
+    "market_cap_shenzhen": 390844.5079
+  },
+  {
+    "date": "2021年12月份",
+    "market_cap_shanghai": 519698.0,
+    "market_cap_shenzhen": 396389.8439
+  },
+  {
+    "date": "2022年01月份",
+    "market_cap_shanghai": 481718.78,
+    "market_cap_shenzhen": 357508.0286
+  },
+  {
+    "date": "2022年02月份",
+    "market_cap_shanghai": 497027.31,
+    "market_cap_shenzhen": 367780.3963
+  },
+  {
+    "date": "2022年03月份",
+    "market_cap_shanghai": 467389.93,
+    "market_cap_shenzhen": 337716.9247
+  },
+  {
+    "date": "2022年04月份",
+    "market_cap_shanghai": 438841.79,
+    "market_cap_shenzhen": 300157.1772
+  },
+  {
+    "date": "2022年05月份",
+    "market_cap_shanghai": 460824.63,
+    "market_cap_shenzhen": 320033.4402
+  },
+  {
+    "date": "2022年06月份",
+    "market_cap_shanghai": 493943.54,
+    "market_cap_shenzhen": 354322.4532
+  },
+  {
+    "date": "2022年07月份",
+    "market_cap_shanghai": 477054.93,
+    "market_cap_shenzhen": 348843.5869
+  },
+  {
+    "date": "2022年08月份",
+    "market_cap_shanghai": 473612.98,
+    "market_cap_shenzhen": 338013.0587
+  },
+  {
+    "date": "2022年09月份",
+    "market_cap_shanghai": 450179.65,
+    "market_cap_shenzhen": 309662.685
+  },
+  {
+    "date": "2022年10月份",
+    "market_cap_shanghai": 433846.91,
+    "market_cap_shenzhen": 306441.9386
+  },
+  {
+    "date": "2022年11月份",
+    "market_cap_shanghai": 471285.05,
+    "market_cap_shenzhen": 329690.8975
+  },
+  {
+    "date": "2022年12月份",
+    "market_cap_shanghai": 463786.76,
+    "market_cap_shenzhen": 324219.1478
+  },
+  {
+    "date": "2023年01月份",
+    "market_cap_shanghai": 490684.18,
+    "market_cap_shenzhen": 352156.6665
+  },
+  {
+    "date": "2023年02月份",
+    "market_cap_shanghai": 495958.72,
+    "market_cap_shenzhen": 353658.4522
+  },
+  {
+    "date": "2023年03月份",
+    "market_cap_shanghai": 497442.63,
+    "market_cap_shenzhen": 351412.269
+  },
+  {
+    "date": "2023年04月份",
+    "market_cap_shanghai": 508485.52,
+    "market_cap_shenzhen": 341054.6162
+  },
+  {
+    "date": "2023年05月份",
+    "market_cap_shanghai": 492967.44,
+    "market_cap_shenzhen": 332208.6918
+  },
+  {
+    "date": "2023年06月份",
+    "market_cap_shanghai": 493395.5,
+    "market_cap_shenzhen": 339219.2397
+  },
+  {
+    "date": "2023年07月份",
+    "market_cap_shanghai": 506802.57,
+    "market_cap_shenzhen": 343813.9355
+  },
+  {
+    "date": "2023年08月份",
+    "market_cap_shanghai": 483241.42,
+    "market_cap_shenzhen": 325423.3483
+  },
+  {
+    "date": "2023年09月份",
+    "market_cap_shanghai": 481674.1,
+    "market_cap_shenzhen": 319946.1919
+  },
+  {
+    "date": "2023年10月份",
+    "market_cap_shanghai": 467972.89,
+    "market_cap_shenzhen": 314424.7792
+  },
+  {
+    "date": "2023年11月份",
+    "market_cap_shanghai": 470469.47,
+    "market_cap_shenzhen": 316264.9671
+  },
+  {
+    "date": "2023年12月份",
+    "market_cap_shanghai": 463127.23,
+    "market_cap_shenzhen": 310003.4788
+  },
+  {
+    "date": "2024年01月份",
+    "market_cap_shanghai": 433127.91,
+    "market_cap_shenzhen": 261045.1714
+  },
+  {
+    "date": "2024年02月份",
+    "market_cap_shanghai": 468558.64,
+    "market_cap_shenzhen": 288706.5421
+  },
+  {
+    "date": "2024年03月份",
+    "market_cap_shanghai": 473022.85,
+    "market_cap_shenzhen": 295922.8318
+  },
+  {
+    "date": "2024年04月份",
+    "market_cap_shanghai": 482871.91,
+    "market_cap_shenzhen": 297333.5468
+  },
+  {
+    "date": "2024年05月份",
+    "market_cap_shanghai": 480119.34,
+    "market_cap_shenzhen": 291482.9265
+  },
+  {
+    "date": "2024年06月份",
+    "market_cap_shanghai": 461499.75,
+    "market_cap_shenzhen": 271650.1652
+  },
+  {
+    "date": "2024年07月份",
+    "market_cap_shanghai": 457332.58,
+    "market_cap_shenzhen": 269609.4041
+  },
+  {
+    "date": "2024年08月份",
+    "market_cap_shanghai": 442360.33,
+    "market_cap_shenzhen": 258376.6494
+  },
+  {
+    "date": "2024年09月份",
+    "market_cap_shanghai": 519544.13,
+    "market_cap_shenzhen": 323216.4251
+  },
+  {
+    "date": "2024年10月份",
+    "market_cap_shanghai": 511459.11,
+    "market_cap_shenzhen": 334114.3552
+  },
+  {
+    "date": "2024年11月份",
+    "market_cap_shanghai": 519637.6,
+    "market_cap_shenzhen": 338651.4651
+  },
+  {
+    "date": "2024年12月份",
+    "market_cap_shanghai": 524308.99,
+    "market_cap_shenzhen": 330411.5313
+  },
+  {
+    "date": "2025年01月份",
+    "market_cap_shanghai": 509659.92,
+    "market_cap_shenzhen": 324178.4093
+  },
+  {
+    "date": "2025年02月份",
+    "market_cap_shanghai": 520923.77,
+    "market_cap_shenzhen": 343584.5056
+  },
+  {
+    "date": "2025年03月份",
+    "market_cap_shanghai": 524049.34,
+    "market_cap_shenzhen": 341128.3394
+  },
+  {
+    "date": "2025年04月份",
+    "market_cap_shanghai": 515570.32,
+    "market_cap_shenzhen": 325948.535
+  },
+  {
+    "date": "2025年05月份",
+    "market_cap_shanghai": 526655.78,
+    "market_cap_shenzhen": 334744.4432
+  },
+  {
+    "date": "2025年06月份",
+    "market_cap_shanghai": 548595.47,
+    "market_cap_shenzhen": 350945.3424
+  },
+  {
+    "date": "2025年07月份",
+    "market_cap_shanghai": 572912.11,
+    "market_cap_shenzhen": 367762.6816
+  },
+  {
+    "date": "2025年08月份",
+    "market_cap_shanghai": 619625.6,
+    "market_cap_shenzhen": 413250.1286
+  },
+  {
+    "date": "2025年09月份",
+    "market_cap_shanghai": 624328.59,
+    "market_cap_shenzhen": 427290.6856
+  },
+  {
+    "date": "2025年10月份",
+    "market_cap_shanghai": 638481.52,
+    "market_cap_shenzhen": 425782.545
+  },
+  {
+    "date": "2025年11月份",
+    "market_cap_shanghai": 628829.71,
+    "market_cap_shenzhen": 417348.9845
+  },
+  {
+    "date": "2025年12月份",
+    "market_cap_shanghai": 647771.04,
+    "market_cap_shenzhen": 432408.3645
+  }
+]

@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}LOF套利 - 韭菜助手{% endblock %}
+
+{% block content %}
+<div class="lof-content">
+    <div class="content-header">
+        <div class="title-area">
+            <h2>LOF套利机会</h2>
+            <div class="update-time">LOF基金套利分析</div>
+        </div>
+    </div>
+    
+    <div class="chart-container">
+        <div id="lofChart" class="chart-wrapper" style="height: 300px;"></div>
+    </div>
+    
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>基金名称<br>基金代码</th>
+                    <th>场内份额<br>场内新增</th>
+                    <th>T-1溢价率</th>
+                    <th>申购状态</th>
+                </tr>
+            </thead>
+            <tbody id="lof-data-body">
+                <!-- 数据将通过JavaScript填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化LOF页面
+    loadLOFData();
+});
+
+async function loadLOFData() {
+    try {
+        // 这里应该是获取LOF数据的API调用
+        // 从API获取真实LOF数据
+        try {
+            const response = await fetch('/api/data/lof');
+            if (response.ok) {
+                const data = await response.json();
+                renderLOFTable(data);
+                renderLOFChart(data);
+            } else {
+                console.error('获取LOF数据失败:', response.status);
+            }
+        } catch (error) {
+            console.error('获取LOF数据时发生错误:', error);
+        }
+    } catch (error) {
+        console.error('加载LOF数据失败:', error);
+    }
+}
+
+function renderLOFTable(data) {
+    const tbody = document.getElementById('lof-data-body');
+    tbody.innerHTML = '';
+    
+    data.forEach(item => {
+        const fundId = item.fund_id || '';
+        const fundNm = item.fund_nm || '';
+        const row = document.createElement('tr');
+        row.style.cursor = 'pointer';
+        row.onclick = () => {
+            window.location.href = `/lof_detail?fund_id=${fundId}&fund_name=${encodeURIComponent(fundNm)}`;
+        };
+        const amount = item.amount || '';
+        const amountIncr = typeof item.amount_incr === 'string' ? item.amount_incr : '+0';
+        const discountRaw = item.discount_rt;
+        const discountRt = (discountRaw === '-' || discountRaw === undefined || isNaN(parseFloat(discountRaw))) ? null : parseFloat(discountRaw);
+        const applyStatus = item.apply_status || '';
+        const amountIncrColor = amountIncr.startsWith('-') ? '#06d6a0' : '#ef476f';
+        const premiumColor = discountRt === null ? '#333' : (discountRt >= 0 ? '#ef476f' : '#06d6a0');
+        const applyColor = applyStatus === '暂停申购' ? '#dc3545' : (applyStatus === '开放申购' ? '#333' : '#28a745');
+        
+        row.innerHTML = `
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <strong>${fundNm}</strong>
+                    <span style="font-size:12px;color:#666;">${fundId}</span>
+                </div>
+            </td>
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <span>${amount}</span>
+                    <span style="font-size:12px;color:${amountIncrColor};">(${amountIncr})</span>
+                </div>
+            </td>
+            <td>
+                <span style="color:${premiumColor};">
+                    ${discountRt === null ? '-' : (discountRt.toFixed(2) + '%')}
+                </span>
+            </td>
+            <td>
+                <span style="color:${applyColor};">${applyStatus}</span>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function renderLOFChart(data) {
+    const chartDom = document.getElementById('lofChart');
+    if (!chartDom) return;
+    
+    const chart = echarts.init(chartDom);
+    
+    // 使用API返回的实际字段名
+    const fundNames = data.map(item => item.fund_nm || item.fundName || '');
+    const discountRates = data.map(item => {
+        const rate = item.discount_rt;
+        // 如果是'-'则返回0，否则返回数值
+        return (rate === '-' || rate === undefined) ? 0 : parseFloat(rate);
+    });
+    
+    const option = {
+        title: {
+            text: 'LOF基金折溢价率',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            data: fundNames,
+            axisLabel: {
+                rotate: 45,
+                fontSize: 12
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: '折溢价率 (%)'
+        },
+        series: [{
+            name: '折溢价率',
+            type: 'bar',
+            data: discountRates,
+            itemStyle: {
+                color: function(params) {
+                    return params.value >= 0 ? '#ef476f' : '#06d6a0';
+                }
+            }
+        }]
+    };
+    
+    chart.setOption(option);
+}
+</script>
+{% endblock %}

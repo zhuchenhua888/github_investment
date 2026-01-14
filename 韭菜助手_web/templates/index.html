@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}首页 - 韭菜助手{% endblock %}
+
+{% block content %}
+<div class="home-content">
+    <h2>欢迎使用韭菜助手</h2>
+    <p>专业的金融数据分析工具，为您提供实时的股市指标和投资参考。</p>
+    
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>宏观经济指标</h3>
+            <p>查看巴菲特指标、股债比、通胀数据等重要经济指标</p>
+            <a href="/stock" class="btn">查看详情</a>
+        </div>
+        
+        <div class="feature-card">
+            <h3>LOF套利机会</h3>
+            <p>发现LOF基金的套利机会，优化您的投资策略</p>
+            <a href="/lof" class="btn">查看详情</a>
+        </div>
+        
+        <div class="feature-card">
+            <h3>ETF分析</h3>
+            <p>跟踪ETF基金表现，分析市场趋势</p>
+            <a href="/etf" class="btn">查看详情</a>
+        </div>
+        
+        <div class="feature-card">
+            <h3>配债信息</h3>
+            <p>获取最新的可转债配售信息，把握投资机会</p>
+            <a href="/peizhai" class="btn">查看详情</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

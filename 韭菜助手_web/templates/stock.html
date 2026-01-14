@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}宏观经济指标 - 韭菜助手{% endblock %}
+
+{% block content %}
+<div class="stock-content">
+    <h2>宏观经济指标</h2>
+    <div class="header-actions">
+        <span class="update-time">最后更新:<span id="last-updated"></span></span>
+    </div>
+
+    <!-- 风险溢价图表 -->
+    <div class="header-actions">
+        <span class="title">风险溢价</span>
+        <span class="title-text">=1/沪深300市盈率-10年期国债收益率</span>
+        <button class="help-btn" onclick="showHelp('riskPremium')">?</button>
+    </div>
+    <div class="chart-container">
+        <div id="riskPremiumChart" class="chart-wrapper" style="height: 400px;"></div>
+    </div>
+
+    <!-- 股债比图表 -->
+    <div class="header-actions">
+        <span class="title">股债比</span>
+        <span class="title-text">=1/沪深300市盈率/10年期国债收益率</span>
+        <button class="help-btn" onclick="showHelp('stockBond')">?</button>
+    </div>
+    <div class="chart-container">
+        <div id="hushen300Chart" class="chart-wrapper" style="height: 400px;"></div>
+    </div>
+
+    <!-- 中国货币供应图表 -->
+    <div class="header-actions">
+        <span class="title">中国货币供应</span>
+        <button class="help-btn" onclick="showHelp('moneySupply')">?</button>
+    </div>
+    <div class="chart-container">
+        <div id="moneySupplyChart" class="chart-wrapper" style="height: 400px;"></div>
+    </div>
+
+    <!-- 巴菲特指标图表 -->
+    <div class="header-actions">
+        <span class="title">巴菲特指标</span>
+        <button class="help-btn" onclick="showHelp('buffet')">?</button>
+    </div>
+    <div class="chart-container">
+        <div id="buffetChart" class="chart-wrapper" style="height: 400px;"></div>
+    </div>
+
+    <!-- 两融账户信息图表 -->
+    <div class="header-actions">
+        <span class="title">两融账户信息</span>
+        <button class="help-btn" onclick="showHelp('margin')">?</button>
+    </div>
+    <div class="chart-container">
+        <div id="marginAccountInfoChart" class="chart-wrapper" style="height: 400px;"></div>
+    </div>
+
+    <!-- CPI、PPI 与 沪深300指数趋势对比图 -->
+    <div class="header-actions">
+        <span class="title">通货膨胀</span>
+        <button class="help-btn" onclick="showHelp('inflation')">?</button>
+    </div>
+    <div class="chart-container">
+        <div id="cpiPpiChart" class="chart-wrapper" style="height: 400px;"></div>
+    </div>
+
+    <!-- 加载状态 -->
+    <div id="loading" class="loading" style="display: none;">
+        <p>数据加载中...</p>
+    </div>
+    
+    <!-- 错误提示 -->
+    <div id="error" class="error" style="display: none;">
+        <p id="error-message"></p>
+        <button class="refresh-btn" onclick="loadStockData()">点击重试</button>
+    </div>
+    
+    <!-- 数据概览 -->
+    <div id="data-overview" class="data-overview" style="display: none;">
+        <div class="data-item">
+            <span class="label">最新指数:</span>
+            <span id="latest-index" class="value"></span>
+        </div>
+        <div class="data-item">
+            <span class="label">日期范围:</span>
+            <span id="date-range" class="value"></span>
+        </div>
+    </div>
+</div>
+
+<!-- 帮助模态框 -->
+<div id="help-modal" class="help-modal" style="display: none;">
+    <div class="help-content">
+        <div class="help-header">
+            <h3 id="help-title">帮助信息</h3>
+            <button class="close-btn" onclick="closeHelp()">×</button>
+        </div>
+        <div id="help-body" class="help-body"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/stock/help_btn.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stock/page_adapter.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stock/view_fed.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stock/view_money_supply.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stock/view_buffet.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stock/view_cpi_ppi.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stock/view_margin_account_info.js') }}"></script>
+<script src="{{ url_for('static', filename='js/stock-page.js') }}"></script>
+{% endblock %}

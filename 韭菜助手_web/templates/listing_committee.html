@@ -1,0 +1,324 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    .listing-container {
+        padding: 20px;
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #f8f9fa;
+    }
+    
+    .filter-bar {
+        background: #fff;
+        padding: 12px 20px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        font-size: 14px;
+        color: #666;
+    }
+    .filter-item {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+    }
+    .filter-item input {
+        margin-right: 6px;
+        cursor: pointer;
+    }
+    
+    /* 分组卡片样式 */
+    .group-card {
+        background: #fff;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        padding: 15px 20px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .group-card:nth-child(even) {
+        background-color: #fcfcfc;
+    }
+    
+    .company-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed #eee;
+    }
+    .company-name {
+        font-weight: bold;
+        color: #333;
+        font-size: 16px;
+    }
+    
+    /* 时间轴列表样式 */
+    .timeline-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: relative;
+    }
+    .timeline-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 0;
+        position: relative;
+    }
+    .timeline-item:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        left: 6px;
+        top: 24px;
+        bottom: -6px;
+        width: 1px;
+        background-color: #ddd;
+        z-index: 1;
+    }
+    
+    .timeline-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #bbb;
+        margin-right: 15px;
+        margin-top: 5px;
+        flex-shrink: 0;
+        z-index: 2;
+        border: 2px solid #fff;
+    }
+    .timeline-dot.filled {
+        background-color: #999;
+    }
+    .timeline-dot.hollow {
+        background-color: #fff;
+        border: 2px solid #bbb;
+    }
+    
+    .timeline-content {
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .file-title {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 80%;
+    }
+    .file-date {
+        color: #bbb;
+        font-size: 14px;
+        white-space: nowrap;
+        margin-left: 15px;
+    }
+    
+    .tag {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 2px;
+        font-size: 11px;
+        font-weight: normal;
+        margin-left: 8px;
+    }
+    .tag-ipo {
+        background-color: #e6f7ff;
+        color: #1890ff;
+        border: 1px solid #91d5ff;
+    }
+    .tag-refinance {
+        background-color: #f6ffed;
+        color: #52c41a;
+        border: 1px solid #b7eb8f;
+    }
+    .tag-sse {
+        background-color: #fff7e6;
+        color: #fa8c16;
+        border: 1px solid #ffd591;
+    }
+    .tag-szse {
+        background-color: #f9f0ff;
+        color: #722ed1;
+        border: 1px solid #d3adf7;
+    }
+
+    .loading {
+        text-align: center;
+        padding: 50px;
+        color: #666;
+    }
+    .error {
+        color: #ff4d4f;
+        text-align: center;
+        padding: 20px;
+        background: #fff2f0;
+        border: 1px solid #ffccc7;
+        border-radius: 4px;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="listing-container">
+    <div class="content-header">
+        <div class="title-area">
+            <h2>上市委审核信息</h2>
+            <div id="lastUpdate" class="update-time"></div>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <label class="filter-item">
+            <input type="checkbox" id="filterRefinance" checked> 仅再融资
+        </label>
+        <label class="filter-item">
+            <input type="checkbox" id="filterSSE" checked> 上交所
+        </label>
+        <label class="filter-item">
+            <input type="checkbox" id="filterSZSE" checked> 深交所
+        </label>
+        <div style="margin-left: auto; color: #999; font-size: 12px;" id="recordCount"></div>
+    </div>
+
+    <div id="loading" class="loading">
+        <p>正在获取沪深交易所最新审核数据...</p>
+    </div>
+
+    <div id="error" class="error" style="display: none;"></div>
+
+    <div id="auditGroups"></div>
+</div>
+
+<script>
+    let allAuditData = [];
+
+    async function fetchAuditData() {
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        const lastUpdate = document.getElementById('lastUpdate');
+
+        try {
+            console.log('Fetching audit data...');
+            const response = await fetch('/api/data/listing_committee');
+            const data = await response.json();
+            console.log('Received data:', data);
+
+            if (data.error) {
+                throw new Error(data.error);
+            }
+
+            if (!data || !Array.isArray(data)) {
+                allAuditData = [];
+            } else {
+                // 处理数据：确保是嵌套数组格式 [[item], [item]]
+                if (data.length > 0 && !Array.isArray(data[0])) {
+                    allAuditData = data.map(item => [item]);
+                } else {
+                    allAuditData = data;
+                }
+            }
+            
+            renderData();
+            lastUpdate.innerText = `最后更新: ${new Date().toLocaleString()}`;
+            loading.style.display = 'none';
+        } catch (err) {
+            loading.style.display = 'none';
+            error.innerText = `加载失败: ${err.message}`;
+            error.style.display = 'block';
+        }
+    }
+
+    function renderData() {
+        const auditGroups = document.getElementById('auditGroups');
+        const filterRefinance = document.getElementById('filterRefinance').checked;
+        const filterSSE = document.getElementById('filterSSE').checked;
+        const filterSZSE = document.getElementById('filterSZSE').checked;
+        const recordCount = document.getElementById('recordCount');
+
+        // 过滤数据
+        const filteredGroups = allAuditData.filter(group => {
+            if (!Array.isArray(group) || group.length === 0) return false;
+            const firstItem = group[0];
+            
+            // 市场过滤
+            if (firstItem.source === 'SSE' && !filterSSE) return false;
+            if (firstItem.source === 'SZSE' && !filterSZSE) return false;
+            
+            // 类型过滤：仅再融资勾选时，只显示再融资；不勾选时，显示所有
+            if (filterRefinance && !firstItem.auditType.includes('再融资')) return false;
+            
+            return true;
+        });
+
+        if (filteredGroups.length === 0) {
+            auditGroups.innerHTML = '<div class="group-card" style="text-align:center; padding: 40px; color: #999;">暂无符合筛选条件的数据</div>';
+            recordCount.innerText = '显示 0 家公司';
+            return;
+        }
+
+        const html = filteredGroups.map(group => {
+            const firstItem = group[0];
+            return `
+                <div class="group-card">
+                    <div class="company-header">
+                        <div class="company-name">
+                            ${firstItem.companyName || '未知公司'}
+                            <span class="tag ${getTagClass(firstItem.auditType)}">${firstItem.auditType || '未知'}</span>
+                            <span class="tag ${getSourceClass(firstItem.source)}">${getSourceLabel(firstItem.source)}</span>
+                        </div>
+                    </div>
+                    <ul class="timeline-list">
+                        ${group.map((item, index) => {
+                            if (!item) return '';
+                            return `
+                                <li class="timeline-item">
+                                    <div class="timeline-dot ${index === 0 ? 'filled' : 'hollow'}"></div>
+                                    <div class="timeline-content">
+                                        <div class="file-title">${item.fileTitle || '无标题'}</div>
+                                        <div class="file-date">${item.fileUpdateTime || ''}</div>
+                                    </div>
+                                </li>
+                            `;
+                        }).join('')}
+                    </ul>
+                </div>
+            `;
+        }).join('');
+        
+        auditGroups.innerHTML = html;
+        recordCount.innerText = `共显示 ${filteredGroups.length} 家公司`;
+    }
+
+    // 绑定事件
+    document.getElementById('filterRefinance').addEventListener('change', renderData);
+    document.getElementById('filterSSE').addEventListener('change', renderData);
+    document.getElementById('filterSZSE').addEventListener('change', renderData);
+
+    function getTagClass(type) {
+        if (!type) return '';
+        if (type.includes('IPO')) return 'tag-ipo';
+        if (type.includes('再融资')) return 'tag-refinance';
+        return '';
+    }
+
+    function getSourceClass(source) {
+        if (source === 'SSE') return 'tag-sse';
+        if (source === 'SZSE') return 'tag-szse';
+        return '';
+    }
+
+    function getSourceLabel(source) {
+        if (source === 'SSE') return '上交所';
+        if (source === 'SZSE') return '深交所';
+        return '未知';
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchAuditData);
+</script>
+{% endblock %}

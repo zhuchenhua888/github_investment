@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}配债信息 - 韭菜助手{% endblock %}
+
+{% block content %}
+<div class="peizhai-content">
+    <h2>配债信息</h2>
+    <p>可转债配售信息及投资机会分析</p>
+        
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>转债名称<br>转债代码</th>
+                    <th>正股名称<br>正股代码</th>
+                    <th>进展日期<br>申购进度</th>
+                    <th>发行规模<br>百元含权</th>
+                    <th>配债策略</th>
+                    <th>转股价格</th>
+                    <th>机会</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody id="peizhai-data-body"></tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化配债页面
+    loadPeizhaiData();
+});
+
+async function loadPeizhaiData() {
+    try {
+        // 从API获取真实配债数据
+        try {
+            const response = await fetch('/api/data/peizhai');
+            if (response.ok) {
+                const data = await response.json();
+                renderPeizhaiTable(data);
+            } else {
+                console.error('获取配债数据失败:', response.status);
+            }
+        } catch (error) {
+            console.error('获取配债数据时发生错误:', error);
+        }
+    } catch (error) {
+        console.error('加载配债数据失败:', error);
+    }
+}
+
+function renderPeizhaiTable(data) {
+    const tbody = document.getElementById('peizhai-data-body');
+    tbody.innerHTML = '';
+    
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        const marketType = item.market_type || 'sz';
+        const strategyShares = marketType === 'sh' ? (item.calcAllocation?.oneHandShares + '股(一手)') : (item.calcAllocation?.baseShares + '股(深市)');
+        const strategyCost = marketType === 'sh' ? item.calcAllocation?.oneHandCost : item.calcAllocation?.baseCost;
+        const cbAmount = (typeof item.cb_amount === 'number') ? (item.cb_amount.toFixed(2) + '元') : '-';
+        const amountText = (typeof item.amount === 'number') ? (item.amount.toFixed(2) + '亿') : '-';
+        // 按策略成本判断机会：小于10000显示“划算”，否则“低”
+        let strategyCostNum = 0;
+        if (typeof strategyCost === 'string') {
+            const cleaned = strategyCost.replace('元', '').replace(',', '').trim();
+            const parsed = parseFloat(cleaned);
+            if (!isNaN(parsed)) strategyCostNum = parsed;
+        }
+        const oppText = strategyCostNum > 0 && strategyCostNum < 10000 ? '高' : '低';
+        const oppClass = strategyCostNum > 0 && strategyCostNum < 10000
+            ? 'background:#eef7ff;color:#1d7afc;'
+            : 'background:#fff7e6;color:#ad6800;';
+        row.innerHTML = `
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <strong>${item.name}</strong>
+                    <span style="font-size:12px;color:#666;">${item.code}</span>
+                </div>
+            </td>
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <span>${item.stockName}</span>
+                    <span style="font-size:12px;color:#666;">${item.stockCode}</span>
+                </div>
+            </td>
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <span>${item.progress_dt || '-'}</span>
+                    <span style="font-size:12px;color:#666;">${item.progress_nm || '-'}</span>
+                </div>
+            </td>
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <span>${amountText}</span>
+                    <span style="font-size:12px;color:${(item.cb_amount > 8) ? '#1d7afc' : '#333'};">${cbAmount}</span>
+                </div>
+            </td>
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <span>${strategyShares || '-'}</span>
+                    <span style="font-size:12px;color:#666;">${strategyCost || '-'}</span>
+                </div>
+            </td>
+            <td>
+                <div style="display:flex;flex-direction:column;">
+                    <span>${(item.price ?? 0).toFixed(2)}</span>
+                </div>
+            </td>
+            <td><span style="padding:2px 8px;border-radius:12px;${oppClass}">${oppText}</span></td>
+            <td>
+                <a href="https://www.jisilu.cn/data/convert_bond_detail/${item.code}" target="_blank">详情</a>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+</script>
+{% endblock %}

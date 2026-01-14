@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block title %}{{ fund_name }} 详情 - 韭菜助手{% endblock %}
+
+{% block content %}
+<style>
+    .detail-container {
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    }
+
+    .loading-overlay {
+        text-align: center;
+        padding: 40px;
+        font-size: 1rem;
+        color: #666;
+    }
+
+    .error-box {
+        text-align: center;
+        padding: 20px;
+        background-color: #fff2f0;
+        border: 1px solid #ffccc7;
+        margin: 20px 0;
+        color: #ff4d4f;
+    }
+
+    /* Table Styles */
+    .table-container {
+        width: 100%;
+        overflow-x: auto;
+        border: 1px solid #eee;
+    }
+
+    .detail-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.9rem;
+    }
+
+    .detail-table th {
+        background: #1976D2;
+        color: #fff;
+        padding: 10px 5px;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    .detail-table td {
+        padding: 8px 5px;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+    }
+
+    .detail-table tr:nth-child(even) {
+        background-color: #fafafa;
+    }
+
+    .detail-table tr:hover {
+        background-color: #f0f8ff;
+    }
+
+    .positive { color: #f5222d; }
+    .negative { color: #52c41a; }
+
+    .back-btn {
+        background-color: #1976D2;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background-color 0.3s;
+    }
+
+    .back-btn:hover {
+        background-color: #1565C0;
+    }
+
+    .sub-info {
+        font-size: 0.75rem;
+        color: #999;
+        display: block;
+    }
+
+    /* Modal Styles */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 400px;
+        border-radius: 8px;
+    }
+
+    .modal-line {
+        margin-bottom: 10px;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="detail-container">
+    <div class="content-header">
+        <div class="title-area">
+            <h2>{{ fund_name }} ({{ fund_id }})</h2>
+            <div id="lastUpdated" class="update-time">最后更新: --</div>
+        </div>
+        <div class="header-actions">
+            <button onclick="window.location.href='/lof'" class="back-btn">返回列表</button>
+        </div>
+    </div>
+
+    <div id="loading" class="loading-overlay">数据加载中...</div>
+    <div id="error" class="error-box" style="display: none;"></div>
+
+    <div class="table-container">
+        <table class="detail-table" id="detailTable">
+            <thead>
+                <tr>
+                    <th>日期</th>
+                    <th>价格<br>净值<br>估值</th>
+                    <th>溢价率</th>
+                    <th>场内份额<br>场内新增</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- Data will be injected here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Simple Detail Modal -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <h3 id="modalTitle">数据详情</h3>
+        <div id="modalBody"></div>
+        <button onclick="closeModal()" style="margin-top: 15px; width: 100%; padding: 8px; background: #1976D2; color: white; border: none; border-radius: 4px;">关闭</button>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const fundId = "{{ fund_id }}";
+    const fundName = "{{ fund_name }}";
+
+    async function loadData() {
+        const loading = document.getElementById('loading');
+        const errorBox = document.getElementById('error');
+        const tableBody = document.getElementById('tableBody');
+        const lastUpdated = document.getElementById('lastUpdated');
+
+        try {
+            loading.style.display = 'block';
+            errorBox.style.display = 'none';
+
+            const response = await fetch(`/api/lof/detail?fund_id=${fundId}`);
+            const data = await response.json();
+
+            if (data.error) {
+                throw new Error(data.error);
+            }
+
+            tableBody.innerHTML = '';
+            data.forEach(item => {
+                const tr = document.createElement('tr');
+                tr.onclick = () => showDetail(item);
+                
+                const discountClass = item.discountRt.startsWith('-') ? 'negative' : 'positive';
+                const incrClass = item.amountIncr.startsWith('-') ? 'negative' : 'positive';
+
+                tr.innerHTML = `
+                    <td>${item.priceDt}</td>
+                    <td>
+                        <div>收盘: ${item.price}</div>
+                        <span class="sub-info">净值: ${item.netValue}</span>
+                        <span class="sub-info">估值: ${item.estVal}</span>
+                    </td>
+                    <td class="${discountClass}">${item.discountRt}</td>
+                    <td>
+                        <div>${item.amount}</div>
+                        <span class="sub-info ${incrClass}">(${item.amountIncr})</span>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            const now = new Date();
+            lastUpdated.innerText = `最后更新: ${now.toLocaleString()}`;
+            loading.style.display = 'none';
+
+        } catch (err) {
+            console.error('Failed to load data:', err);
+            loading.style.display = 'none';
+            errorBox.style.display = 'block';
+            errorBox.innerText = `加载失败: ${err.message}`;
+        }
+    }
+
+    function showDetail(item) {
+        const modal = document.getElementById('detailModal');
+        const modalBody = document.getElementById('modalBody');
+        
+        modalBody.innerHTML = `
+            <div class="modal-line"><strong>价格：</strong>${item.price} (${item.priceDt})</div>
+            <div class="modal-line"><strong>净值：</strong>${item.netValue} (${item.netValueDt || item.priceDt})</div>
+            <div class="modal-line"><strong>估值：</strong>${item.estVal} (${item.estValDt || item.priceDt})</div>
+            <div class="modal-line"><strong>溢价率：</strong>${item.discountRt}</div>
+            <div class="modal-line"><strong>份额：</strong>${item.amount}</div>
+            <div class="modal-line"><strong>新增：</strong>${item.amountIncr}</div>
+        `;
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('detailModal').style.display = "none";
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('detailModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadData);
+</script>
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}ETF分析 - 韭菜助手{% endblock %}
+
+{% block content %}
+<div class="etf-content">
+    <h2>ETF分析</h2>
+    <p>交易所交易基金分析与跟踪</p>
+    
+    <div class="chart-container">
+        <div id="etfPerformanceChart" class="chart-wrapper" style="height: 500px;"></div>
+    </div>
+    
+    <div class="data-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>基金代码</th>
+                    <th>基金名称</th>
+                    <th>当前价格</th>
+                    <th>日涨幅</th>
+                    <th>年初至今</th>
+                    <th>跟踪指数</th>
+                </tr>
+            </thead>
+            <tbody id="etf-data-body">
+                <!-- 数据将通过JavaScript填充 -->
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // 初始化ETF页面
+    loadETFData();
+});
+
+async function loadETFData() {
+    try {
+        // 从API获取真实ETF数据
+        try {
+            const response = await fetch('/api/data/etf');
+            if (response.ok) {
+                const data = await response.json();
+                renderETFTable(data);
+                renderETFPerformanceChart(data);
+            } else {
+                console.error('获取ETF数据失败:', response.status);
+                // 如果API失败，使用备用数据
+                const backupData = [
+                    { fundCode: '510300', fundName: '沪深300ETF', price: 4.25, dailyChange: 1.2, ytdChange: 12.5, index: '沪深300' },
+                    { fundCode: '510050', fundName: '上证50ETF', price: 2.89, dailyChange: 0.8, ytdChange: 8.3, index: '上证50' },
+                    { fundCode: '512100', fundName: '创业板ETF', price: 2.15, dailyChange: -0.5, ytdChange: -2.1, index: '创业板' },
+                    { fundCode: '512880', fundName: '证券ETF', price: 1.08, dailyChange: 2.1, ytdChange: 15.7, index: '中证全指证券' },
+                    { fundCode: '512010', fundName: '医疗ETF', price: 1.92, dailyChange: -1.2, ytdChange: -5.3, index: '中证医疗' }
+                ];
+                renderETFTable(backupData);
+                renderETFPerformanceChart(backupData);
+            }
+        } catch (error) {
+            console.error('获取ETF数据时发生错误:', error);
+            // 如果API失败，使用备用数据
+            const backupData = [
+                { fundCode: '510300', fundName: '沪深300ETF', price: 4.25, dailyChange: 1.2, ytdChange: 12.5, index: '沪深300' },
+                { fundCode: '510050', fundName: '上证50ETF', price: 2.89, dailyChange: 0.8, ytdChange: 8.3, index: '上证50' },
+                { fundCode: '512100', fundName: '创业板ETF', price: 2.15, dailyChange: -0.5, ytdChange: -2.1, index: '创业板' },
+                { fundCode: '512880', fundName: '证券ETF', price: 1.08, dailyChange: 2.1, ytdChange: 15.7, index: '中证全指证券' },
+                { fundCode: '512010', fundName: '医疗ETF', price: 1.92, dailyChange: -1.2, ytdChange: -5.3, index: '中证医疗' }
+            ];
+            renderETFTable(backupData);
+            renderETFPerformanceChart(backupData);
+        }
+    } catch (error) {
+        console.error('加载ETF数据失败:', error);
+    }
+}
+
+function renderETFTable(data) {
+    const tbody = document.getElementById('etf-data-body');
+    tbody.innerHTML = '';
+    
+    data.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.fundCode}</td>
+            <td>${item.fundName}</td>
+            <td>¥${item.price.toFixed(2)}</td>
+            <td class="${item.dailyChange >= 0 ? 'positive' : 'negative'}">${item.dailyChange >= 0 ? '+' : ''}${item.dailyChange.toFixed(2)}%</td>
+            <td class="${item.ytdChange >= 0 ? 'positive' : 'negative'}">${item.ytdChange >= 0 ? '+' : ''}${item.ytdChange.toFixed(2)}%</td>
+            <td>${item.index}</td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function renderETFPerformanceChart(data) {
+    const chartDom = document.getElementById('etfPerformanceChart');
+    if (!chartDom) return;
+    
+    const chart = echarts.init(chartDom);
+    
+    const fundNames = data.map(item => item.fundName);
+    const ytdChanges = data.map(item => item.ytdChange);
+    const dailyChanges = data.map(item => item.dailyChange);
+    
+    const option = {
+        title: {
+            text: 'ETF年度表现对比',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            data: ['年初至今', '日涨幅'],
+            top: '10%'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'category',
+            data: fundNames,
+            axisLabel: {
+                rotate: 45,
+                fontSize: 12
+            }
+        },
+        yAxis: {
+            type: 'value',
+            name: '收益率 (%)'
+        },
+        series: [
+            {
+                name: '年初至今',
+                type: 'bar',
+                data: ytdChanges,
+                itemStyle: {
+                    color: '#4363d8'
+                }
+            },
+            {
+                name: '日涨幅',
+                type: 'bar',
+                data: dailyChanges,
+                itemStyle: {
+                    color: '#bcf60c'
+                }
+            }
+        ]
+    };
+    
+    chart.setOption(option);
+}
+</script>
+{% endblock %}
