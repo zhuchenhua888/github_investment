@@ -1,0 +1,4 @@
+# Root requirements for Vercel deployment.
+# Vercel installs dependencies from a requirements.txt at the project root.
+# This file forwards installation to the app-specific requirements file.
+-r ./韭菜助手_web/requirements.txt
