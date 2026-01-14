@@ -1,0 +1,10 @@
+{
+  "functions": {
+    "app.py": {
+      "runtime": "python3.11"
+    },
+    "**/*.py": {
+      "runtime": "python3.11"
+    }
+  }
+}
